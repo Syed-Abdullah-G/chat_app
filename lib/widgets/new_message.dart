@@ -51,7 +51,7 @@ class _NewMessageState extends State<NewMessage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         left: 15,
         right: 1,
         bottom: 14,
@@ -64,12 +64,12 @@ class _NewMessageState extends State<NewMessage> {
             textCapitalization: TextCapitalization.sentences,
             autocorrect: true,
             enableSuggestions: true,
-            decoration: InputDecoration(labelText: 'Send a message...'),
+            decoration: const InputDecoration(labelText: 'Send a message...'),
           )),
           IconButton(
               color: Theme.of(context).colorScheme.primary,
               onPressed: _submitMessage,
-              icon: Icon(Icons.send))
+              icon: const Icon(Icons.send))
         ],
       ),
     );

@@ -88,7 +88,7 @@ class _AuthScreenState extends State<AuthScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 30,
                   bottom: 20,
                   right: 20,
@@ -98,10 +98,10 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: Image.asset('assets/images/chat.png'),
               ),
               Card(
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Form(
                       key: _form,
                       child: Column(
@@ -115,7 +115,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             ),
                           TextFormField(
                             decoration:
-                                InputDecoration(labelText: 'Email Address'),
+                                const InputDecoration(labelText: 'Email Address'),
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
                             textCapitalization: TextCapitalization.none,
@@ -134,7 +134,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           if (!_isLogin)
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Username'),
+                            decoration: const InputDecoration(labelText: 'Username'),
                             enableSuggestions: false,
                             validator: (value) {
                               if (value == null || value.isEmpty || value.trim().length < 4) {
@@ -147,7 +147,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             },
                           ),
                           TextFormField(
-                            decoration: InputDecoration(labelText: 'Password'),
+                            decoration: const InputDecoration(labelText: 'Password'),
                             obscureText: true,
                             validator: (value) {
                               if (value == null || value.trim().length < 6) {
@@ -163,7 +163,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           const SizedBox(
                             height: 12,
                           ),
-                          if (_isAuthenticating) CircularProgressIndicator(),
+                          if (_isAuthenticating) const CircularProgressIndicator(),
                           if (!_isAuthenticating)
                             ElevatedButton(
                               onPressed: _submit,

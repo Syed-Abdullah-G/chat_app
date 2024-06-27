@@ -2,10 +2,7 @@ import 'package:chat_app/widgets/chat_messages.dart';
 import 'package:chat_app/widgets/new_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -18,7 +15,19 @@ class _ChatScreenState extends State<ChatScreen> {
   void setupPushNotifications() async {
 
     final fcm  = FirebaseMessaging.instance;
+    
+    FirebaseMessaging.instance.getToken().then((value) {
+
+      
+      String? token = value;
+      print('FCM TOkEN = ${token}');
+    });
+    
+
     await fcm.requestPermission();
+
+    fcm.subscribeToTopic('chat');
+
 
     fcm.getToken();
   }
@@ -33,7 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('FlutterChat'),
+          title: const Text('FlutterChat'),
           actions: [
             IconButton(
                 onPressed: () {
@@ -45,7 +54,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ))
           ],
         ),
-        body: Column(
+        body: const Column(
           children: [
             Expanded(child: ChatMessages()),
             NewMessage(),
